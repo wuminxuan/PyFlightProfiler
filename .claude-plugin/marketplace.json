@@ -1,0 +1,20 @@
+{
+  "name": "wuminxuan",
+  "owner": {
+    "name": "wuminxuan"
+  },
+  "metadata": {
+    "description": "PyFlightProfiler - AI-powered non-intrusive Python diagnostics",
+    "homepage": "https://github.com/wuminxuan/PyFlightProfiler"
+  },
+  "plugins": [
+    {
+      "name": "flight-profiler",
+      "version": "1.0.0",
+      "source": "./plugins/flight-profiler",
+      "description": "AI-powered Python process diagnostics with automated troubleshooting",
+      "category": "development",
+      "tags": ["python", "diagnostics", "profiling", "debugging", "performance"]
+    }
+  ]
+}

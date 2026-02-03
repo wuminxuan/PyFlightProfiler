@@ -1,0 +1,22 @@
+{
+  "name": "flight-profiler",
+  "version": "1.0.0",
+  "description": "AI-powered Python process diagnostics - observe methods, trace calls, analyze memory, monitor GIL, and more",
+  "author": {
+    "name": "wuminxuan"
+  },
+  "repository": "https://github.com/wuminxuan/PyFlightProfiler",
+  "license": "Apache-2.0",
+  "keywords": [
+    "python",
+    "diagnostics",
+    "profiling",
+    "debugging",
+    "performance",
+    "memory",
+    "gil",
+    "pytorch",
+    "trace",
+    "watch"
+  ]
+}
