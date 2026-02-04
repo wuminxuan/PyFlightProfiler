@@ -6,7 +6,7 @@ from pathlib import Path
 
 def get_skills_source_dir() -> Path:
     """Get the skills directory from the installed package."""
-    return Path(__file__).parent.parent / "skills"
+    return Path(__file__).parent / "skills"
 
 
 def get_skills_target_dir() -> Path:
