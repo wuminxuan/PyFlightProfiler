@@ -19,7 +19,7 @@ if [ "$USER" == "root" ] && [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-server_bin_path=$(lsof -p "$server_pid" 2>/dev/null | grep "txt.*python" | awk '{print $9}' | head -1)
+server_bin_path=$(lsof -p "$server_pid" 2>/dev/null | grep -E "txt.*(Python|python[0-9.]*)$" | awk '{print $9}' | head -1)
 if [ -z "$server_bin_path" ]; then
     echo "Can't locate $server_pid executable path via lsof -p $server_pid, maybe process_pid $server_pid not exists!"
     exit 1
@@ -29,7 +29,21 @@ if [ -L "$server_bin_path" ]; then
     server_bin_path=$(realpath "$server_bin_path")
 fi
 
-if [ "$py_bin_path" != "$server_bin_path" ]; then
+# Extract Python framework version directory for comparison
+get_framework_version() {
+    echo "$1" | grep -oE "Python\.framework/Versions/[0-9.]+" | head -1
+}
+
+py_framework=$(get_framework_version "$py_bin_path")
+server_framework=$(get_framework_version "$server_bin_path")
+
+# Compare framework versions if both are framework installs, otherwise compare full paths
+if [ -n "$py_framework" ] && [ -n "$server_framework" ]; then
+    if [ "$py_framework" != "$server_framework" ]; then
+        echo "flight_profiler and target process are not in the same python environment!"
+        exit 1
+    fi
+elif [ "$py_bin_path" != "$server_bin_path" ]; then
     echo "flight_profiler and target process are not in the same python environment!"
     exit 1
 fi
