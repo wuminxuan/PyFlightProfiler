@@ -9,7 +9,7 @@ packages = [
     { include = "flight_profiler" }
 ]
 
-include = ["flight_profiler/lib/*"]
+include = ["flight_profiler/lib/*", "flight_profiler/skills/*.md"]
 
 [tool.poetry.build]
 script = "build_c_extensions.py"
