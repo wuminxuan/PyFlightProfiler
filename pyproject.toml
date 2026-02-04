@@ -6,8 +6,7 @@ homepage = "https://github.com/alibaba/PyFlightProfiler"
 readme = "README.md"
 authors = []
 packages = [
-    { include = "flight_profiler" },
-    { include = "skills" }
+    { include = "flight_profiler" }
 ]
 
 include = ["flight_profiler/lib/*", "skills/*.md"]
