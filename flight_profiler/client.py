@@ -454,9 +454,21 @@ def show_pre_attach_info(server_pid: str, debug: bool = False):
         print(f"[INFO] Permission information not available on this platform.")
 
 def run():
+    # Handle subcommands
+    if len(sys.argv) > 1:
+        cmd = sys.argv[1]
+        if cmd == "install-skills":
+            from flight_profiler.skills_installer import install_skills
+            install_skills()
+            return
+        elif cmd == "uninstall-skills":
+            from flight_profiler.skills_installer import uninstall_skills
+            uninstall_skills()
+            return
+
     parser = argparse.ArgumentParser(
-        usage="%(prog)s <pid> \n\ndescription: A realtime analysis tool used for profiling python program!  \n"
-              " "
+        usage="%(prog)s <pid> [options]\n       %(prog)s install-skills\n       %(prog)s uninstall-skills\n\n"
+              "A realtime analysis tool for profiling Python programs."
     )
     parser.add_argument(
         "pid",
