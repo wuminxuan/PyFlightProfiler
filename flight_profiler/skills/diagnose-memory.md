@@ -10,13 +10,6 @@ You are diagnosing **memory issues** for a Python process using PyFlightProfiler
 ## Input
 - **PID**: $ARGUMENTS
 
-## Prerequisites
-
-Ensure PyFlightProfiler is installed:
-```bash
-pip show flight-profiler || pip install flight-profiler
-```
-
 ## Diagnostic Steps
 
 ### Step 1: Get Memory Summary
